@@ -19,7 +19,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
-	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +29,8 @@ public class Usuario {
 	protected String apellido;
 	@Column(name = "nombre_usuario")
 	protected String nombreUsuario;
+	@Column(name="password")
+	protected String password;
 	@Column(name = "fecha_nacimiento")
 	protected LocalDate fechaNacimiento;
 	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH}, fetch = FetchType.LAZY)
@@ -62,6 +63,12 @@ public class Usuario {
 	}
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;

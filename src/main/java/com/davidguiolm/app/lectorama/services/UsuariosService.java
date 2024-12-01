@@ -25,6 +25,13 @@ public class UsuariosService implements CrudService<Usuario> {
 	public Usuario consultar(Integer id) throws RegistroNotFoundException {
 		return repository.findById(id).orElseThrow(RegistroNotFoundException::new);
 	}
+	
+	@Transactional(readOnly = true)
+	public Usuario consultarPorNombreUsuarioPassword(Usuario usuario) throws RegistroNotFoundException {
+		return repository.findByNombreUsuarioAndPassword(usuario.getNombreUsuario(), usuario.getPassword())
+				.orElseThrow(() -> new RegistroNotFoundException("No existe un usuario con esas credenciales"));
+
+	}
 
 	@Override
 	@Transactional(readOnly = true)

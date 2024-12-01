@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lectorama</title>
+<link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+
+	<div id="divForm">
+		<h1>Inicia Sesión</h1>
+		<form action="#" th:action="@{/login}" method="post" th:object="${usuario}">
+			<input type="text" id="txfNombreUsuario" name="nombreUsuario" placeholder="Usuario" th:field="*{nombreUsuario}">
+			<br>
+			<input type="password" id="txfPassword" name="password" placeholder="Contraseña" th:field="*{password}">
+			<br>
+			<button type="submit">Entrar</button>
+		</form>
+	</div>
+	<div id="divInfo">
+		<h1>Bienvenido a Lectorama</h1>
+		<p><a href="#">¿Olvidó su contraseña?</a></p>
+		<p>¿No tienes cuenta?<a href="#"> Registrate</a></p>
+	</div>
+</body>
+</html>
